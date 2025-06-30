@@ -30,3 +30,43 @@ cmake ..
 make -j$(nproc)
 ./MiniEngine
 ```
+
+---
+
+## 🛠️ TODO (Development Roadmap)
+
+### 🎮 Core Engine
+- [ ] Refactor input system into event-based callbacks
+- [ ] Add customizable input mapping / keybinding
+- [ ] Abstract rendering into a Renderer class
+- [ ] Add frame timing & FPS counter
+- [ ] Support multiple camera types (FPS, orbit, free-fly)
+
+### 🔦 Rendering
+- [ ] Add directional lighting (Phong shading)
+- [ ] Point and spot light support
+- [ ] Normal mapping and specular highlights
+- [ ] Skybox with cubemap shaders
+- [ ] Post-processing effects (bloom, fog, grayscale, etc.)
+- [ ] Shadow mapping (depth maps)
+
+### 🎨 Assets / Scene
+- [ ] Load OBJ/GLTF models
+- [ ] Add basic material system
+- [ ] Texture support (diffuse / normal / specular)
+- [ ] Add scene graph / transform hierarchy
+
+### 🧠 Systems
+- [ ] Component-based Entity system (ECS-lite)
+- [ ] Physics: basic AABB collisions
+- [ ] Add scripting hooks (e.g., Lua or C++ callbacks)
+- [ ] Simple animation system
+
+### 🧪 Tooling
+- [ ] In-game debug UI (using ImGui)
+- [ ] Hot-reloading shaders
+- [ ] Mouse picking / raycasting
+- [ ] Simple editor for placing entities
+
+### 🐧 Platform / Build
+- [ ] Windows support (currently Linux-only tested)
