@@ -28,7 +28,7 @@ int main() {
     InputManager::init(window);
 
     {
-        Shader shader("assets/shaders/vertex.glsl", "assets/shaders/fragment.glsl");
+        Shader shader("../assets/shaders/vertex.glsl", "../assets/shaders/fragment.glsl");
 
         float cubeVertices[] = {
             // Position         // Normal
