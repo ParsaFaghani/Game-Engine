@@ -62,13 +62,16 @@ int main() {
         Camera camera(glm::vec3(0, 0, 5), glm::vec3(0, 1, 0), -90.0f, 0.0f);
         float deltaTime = 0.0f, lastFrame = 0.0f;
 	glfwSetInputMode(window, GLFW_CURSOR, GLFW_CURSOR_DISABLED);
+
+        float degress = 5.0f;
+       
         while (!glfwWindowShouldClose(window)) {
             float now = glfwGetTime();
             deltaTime = now - lastFrame;
             lastFrame = now;
 
             InputManager::update();
-            float sens = 0.1f;
+            float sens = 0.2f;
             glm::vec2 mouseDelta = InputManager::getMouseDelta();
             std::cout << "Mouse ?: " << mouseDelta.x*sens << ", " << mouseDelta.y*sens << "\n";
             camera.processMouseMovement(mouseDelta.x*sens, mouseDelta.y*sens);
@@ -91,6 +94,9 @@ int main() {
 
             shader.bind();
             glm::mat4 model = glm::mat4(1.0f);
+            
+            model = glm::rotate(model, glm::radians(degress), glm::vec3(0.0f,1.0f,0.0f));
+       	    degress += 5.0f;
             shader.setMat4("uModel", model);
             shader.setMat4("uView", camera.getViewMatrix());
             shader.setMat4("uProjection", glm::perspective(glm::radians(45.0f), 800.f/600.f, 0.1f, 100.f));
