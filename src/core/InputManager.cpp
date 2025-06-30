@@ -1,4 +1,5 @@
 #include "InputManager.h"
+#include <iostream>
 
 GLFWwindow* InputManager::s_window = nullptr;
 std::unordered_map<int, bool> InputManager::s_currentKeys;
@@ -16,7 +17,7 @@ void InputManager::init(GLFWwindow* window) {
 
 void InputManager::update() {
     s_previousKeys = s_currentKeys;
-    s_mouseDelta = glm::vec2(0.0f); // reset after use
+    // mouseDelta ?? ????? ???? ???? ???? ??? ?? ??????? reset ???????
 }
 
 bool InputManager::isKeyDown(int key) {
@@ -35,6 +36,10 @@ glm::vec2 InputManager::getMouseDelta() {
     return s_mouseDelta;
 }
 
+void InputManager::setMouseDelta(const glm::vec2& delta) {
+    s_mouseDelta = delta;
+}
+
 void InputManager::setFirstMouse(bool val) {
     s_firstMouse = val;
 }
@@ -49,11 +54,12 @@ void InputManager::keyCallback(GLFWwindow* window, int key, int, int action, int
 void InputManager::mouseCallback(GLFWwindow*, double xpos, double ypos) {
     if (s_firstMouse) {
         s_lastMousePos = glm::vec2(xpos, ypos);
+        s_mouseDelta = glm::vec2(0.0f);
         s_firstMouse = false;
         return;
     }
 
-    glm::vec2 current(xpos, ypos);
+    glm::vec2 current = glm::vec2(xpos, ypos);
     s_mouseDelta = current - s_lastMousePos;
     s_lastMousePos = current;
 }
