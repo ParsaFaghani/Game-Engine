@@ -61,7 +61,7 @@ int main() {
 
         Camera camera(glm::vec3(0, 0, 5), glm::vec3(0, 1, 0), -90.0f, 0.0f);
         float deltaTime = 0.0f, lastFrame = 0.0f;
-
+	glfwSetInputMode(window, GLFW_CURSOR, GLFW_CURSOR_DISABLED);
         while (!glfwWindowShouldClose(window)) {
             float now = glfwGetTime();
             deltaTime = now - lastFrame;
@@ -72,7 +72,7 @@ int main() {
             glm::vec2 mouseDelta = InputManager::getMouseDelta();
             std::cout << "Mouse ?: " << mouseDelta.x*sens << ", " << mouseDelta.y*sens << "\n";
             camera.processMouseMovement(mouseDelta.x*sens, mouseDelta.y*sens);
-            InputManager::setMouseDelta(glm::vec2(0.0f)); // Reset ??? ?? ???????
+            InputManager::setMouseDelta(glm::vec2(0.0f));
 
             if (InputManager::isKeyDown(GLFW_KEY_W)) camera.processKeyboard('W', deltaTime);
             if (InputManager::isKeyDown(GLFW_KEY_S)) camera.processKeyboard('S', deltaTime);
