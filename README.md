@@ -43,7 +43,7 @@ make -j$(nproc)
 - [ ] Support multiple camera types (FPS, orbit, free-fly)
 
 ### 🔦 Rendering
-- [ ] Add directional lighting (Phong shading)
+- [*] Add directional lighting (Phong shading)(simple)
 - [ ] Point and spot light support
 - [ ] Normal mapping and specular highlights
 - [ ] Skybox with cubemap shaders
@@ -57,7 +57,7 @@ make -j$(nproc)
 - [ ] Add scene graph / transform hierarchy
 
 ### 🧠 Systems
-- [ ] Component-based Entity system (ECS-lite)
+- [ ] Node-based system
 - [ ] Physics: basic AABB collisions
 - [ ] Add scripting hooks (e.g., Lua or C++ callbacks)
 - [ ] Simple animation system
@@ -66,7 +66,7 @@ make -j$(nproc)
 - [ ] In-game debug UI (using ImGui)
 - [ ] Hot-reloading shaders
 - [ ] Mouse picking / raycasting
-- [ ] Simple editor for placing entities
+- [ ] Simple editor for placing Nodes
 
 ### 🐧 Platform / Build
-- [ ] Windows support (currently Linux-only tested)
+- [*] cross-platform(Linux and windows tested)
