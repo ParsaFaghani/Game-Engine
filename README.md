@@ -39,7 +39,7 @@ make -j$(nproc)
 - [ ] Refactor input system into event-based callbacks
 - [ ] Add customizable input mapping / keybinding
 - [ ] Abstract rendering into a Renderer class
-- [ ] Add frame timing & FPS counter
+- [x] Add frame timing & FPS counter
 - [ ] Support multiple camera types (FPS, orbit, free-fly)
 
 ### 🔦 Rendering
