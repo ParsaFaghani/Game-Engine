@@ -43,7 +43,7 @@ make -j$(nproc)
 - [ ] Support multiple camera types (FPS, orbit, free-fly)
 
 ### 🔦 Rendering
-- [*] Add directional lighting (Phong shading)(simple)
+- [x] Add directional lighting (Phong shading)(simple)
 - [ ] Point and spot light support
 - [ ] Normal mapping and specular highlights
 - [ ] Skybox with cubemap shaders
@@ -69,4 +69,4 @@ make -j$(nproc)
 - [ ] Simple editor for placing Nodes
 
 ### 🐧 Platform / Build
-- [*] cross-platform(Linux and windows tested)
+- [x] cross-platform(Linux and windows tested)
