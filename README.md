@@ -1,7 +1,6 @@
 # 🌀 MiniEngine — Lightweight OpenGL Game Engine
 
 ![License](https://img.shields.io/badge/license-MIT-blue.svg)
-![Platform](https://img.shields.io/badge/platform-Linux-lightgrey)
 ![OpenGL](https://img.shields.io/badge/OpenGL-3.3+-blue)
 
 **MiniEngine** is a minimal yet modular OpenGL-based game engine sandbox, written in modern C++.  
