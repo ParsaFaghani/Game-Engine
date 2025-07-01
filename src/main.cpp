@@ -27,6 +27,7 @@ int main() {
     glfwMakeContextCurrent(window);
     glfwSwapInterval(1);
     gladLoadGLLoader((GLADloadproc)glfwGetProcAddress);
+    std::cout << "OpenGL version: " << glGetString(GL_VERSION) << "\n";
     glViewport(0, 0, 800, 600);
     glEnable(GL_DEPTH_TEST);
 
@@ -119,10 +120,14 @@ int main() {
             shader.setMat4("model", model);
             shader.setMat4("view", camera.getViewMatrix());
             shader.setMat4("projection", glm::perspective(glm::radians(45.0f), 800.f/600.f, 0.1f, 100.f));
-            shader.setVec3("lightPos", glm::vec3(2.0f, 4.0f, 1.5f));
+            shader.setVec3("lightPos", camera.getPosition());
             shader.setVec3("viewPos", camera.getPosition());
             shader.setVec3("lightColor", glm::vec3(1.0f, 1.0f, 1.0f));
             shader.setVec3("objectColor", glm::vec3(1.0f, 0.5f, 0.31f));
+            shader.setFloat("constant", 1.0f);
+            shader.setFloat("linear", 0.09f);         // یا کمتر برای نور قوی‌تر
+            shader.setFloat("quadratic", 0.032f);
+            shader.setFloat("shininess", 32.0f);
             glBindVertexArray(VAO);
             glDrawArrays(GL_TRIANGLES, 0, 36);
 
