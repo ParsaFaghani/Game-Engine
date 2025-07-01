@@ -5,6 +5,10 @@ Camera::Camera(glm::vec3 pos, glm::vec3 up, float yaw, float pitch)
     updateCameraVectors();
 }
 
+glm::vec3 Camera::getPosition() const{
+    return m_position;
+}
+
 glm::mat4 Camera::getViewMatrix() const {
     return glm::lookAt(m_position, m_position + m_front, m_up);
 }

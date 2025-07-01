@@ -10,6 +10,7 @@ include_directories(
     libs/glad/include
     libs/glfw/include
     libs/glm
+    libs/SimpleIni
 )
 
 # Source files
@@ -18,9 +19,11 @@ add_executable(MiniEngine
     src/main.cpp
     src/core/InputManager.cpp
     src/graphics/Shader.cpp
-    libs/glad/src/glad.c
     src/graphics/Camera.cpp
+    src/core/config/Config.cpp
+    src/core/config/EngineSettings.cpp
+    libs/glad/src/glad.c
 )
 
 # Link libraries
-target_link_libraries(MiniEngine glfw)
+target_link_libraries(MiniEngine PRIVATE glfw)

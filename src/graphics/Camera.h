@@ -6,6 +6,7 @@ class Camera {
 public:
     Camera(glm::vec3 position, glm::vec3 up, float yaw, float pitch);
     glm::mat4 getViewMatrix() const;
+    glm::vec3 getPosition() const;
     void processKeyboard(char direction, float deltaTime);
     void processMouseMovement(float xOffset, float yOffset, bool constrainPitch = true);
 

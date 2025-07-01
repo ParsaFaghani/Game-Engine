@@ -3,11 +3,15 @@
 #include "graphics/Shader.h"
 #include "graphics/Camera.h"
 #include "core/InputManager.h"
+#include "core/config/Config.h"
+#include "core/config/EngineSettings.h"
 #include <glm/glm.hpp>
 #include <glm/gtc/matrix_transform.hpp>
 #include <iostream>
 
 int main() {
+    EngineSettings settings;
+    Config conf(settings);
     // GLFW ? OpenGL
     glfwInit();
     glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
@@ -21,6 +25,7 @@ int main() {
         return -1;
     }
     glfwMakeContextCurrent(window);
+    glfwSwapInterval(1);
     gladLoadGLLoader((GLADloadproc)glfwGetProcAddress);
     glViewport(0, 0, 800, 600);
     glEnable(GL_DEPTH_TEST);
@@ -64,16 +69,30 @@ int main() {
 	glfwSetInputMode(window, GLFW_CURSOR, GLFW_CURSOR_DISABLED);
 
         float degress = 5.0f;
-       
+        float lastTime = glfwGetTime();  // در ابتدای برنامه
+        int nbFrames = 0;
+        float fpsStartTime = 0.0f;
+
         while (!glfwWindowShouldClose(window)) {
-            float now = glfwGetTime();
-            deltaTime = now - lastFrame;
-            lastFrame = now;
+            float currentTime = glfwGetTime();
+            float deltaTime = currentTime - lastTime;
+            lastTime = currentTime;
+
+            // FPS اندازه‌گیری
+            nbFrames++;
+            if (currentTime - fpsStartTime >= 1.0f) {
+                std::cout << "FPS: " << nbFrames << std::endl;
+                nbFrames = 0;
+                fpsStartTime = currentTime;
+            }
+
+
+
 
             InputManager::update();
             float sens = 0.2f;
             glm::vec2 mouseDelta = InputManager::getMouseDelta();
-            std::cout << "Mouse ?: " << mouseDelta.x*sens << ", " << mouseDelta.y*sens << "\n";
+            // std::cout << "Mouse ?: " << mouseDelta.x*sens << ", " << mouseDelta.y*sens << "\n";
             camera.processMouseMovement(mouseDelta.x*sens, mouseDelta.y*sens);
             InputManager::setMouseDelta(glm::vec2(0.0f));
 
@@ -97,10 +116,13 @@ int main() {
             
             model = glm::rotate(model, glm::radians(degress), glm::vec3(0.0f,1.0f,0.0f));
        	    degress += 5.0f;
-            shader.setMat4("uModel", model);
-            shader.setMat4("uView", camera.getViewMatrix());
-            shader.setMat4("uProjection", glm::perspective(glm::radians(45.0f), 800.f/600.f, 0.1f, 100.f));
-
+            shader.setMat4("model", model);
+            shader.setMat4("view", camera.getViewMatrix());
+            shader.setMat4("projection", glm::perspective(glm::radians(45.0f), 800.f/600.f, 0.1f, 100.f));
+            shader.setVec3("lightPos", glm::vec3(2.0f, 4.0f, 1.5f));
+            shader.setVec3("viewPos", camera.getPosition());
+            shader.setVec3("lightColor", glm::vec3(1.0f, 1.0f, 1.0f));
+            shader.setVec3("objectColor", glm::vec3(1.0f, 0.5f, 0.31f));
             glBindVertexArray(VAO);
             glDrawArrays(GL_TRIANGLES, 0, 36);
 
