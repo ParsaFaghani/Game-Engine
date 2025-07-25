@@ -1,4 +1,4 @@
-# 🌀 MiniEngine — Lightweight OpenGL Game Engine
+# 🌀 MiniEngine — Lightweight OpenGL Game Engine (Stopped)
 
 ![License](https://img.shields.io/badge/license-MIT-blue.svg)
 ![OpenGL](https://img.shields.io/badge/OpenGL-3.3+-blue)
