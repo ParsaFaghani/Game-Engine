@@ -2,9 +2,9 @@ name: Build C++ Project with CMake & GLFW
 
 on:
   push:
-    branches: [ "main" ]
+    branches: ["main"]
   pull_request:
-    branches: [ "main" ]
+    branches: ["main"]
 
 jobs:
   build:
@@ -16,16 +16,16 @@ jobs:
         with:
           submodules: recursive
 
-      - name: Install build dependencies
+      - name: Install dependencies
         run: |
           sudo apt-get update
-          sudo apt-get install -y cmake make g++ wayland-protocols libx11-dev libxrandr-dev libxinerama-dev libxcursor-dev libxi-dev
+          sudo apt-get install -y cmake make g++ libx11-dev libxrandr-dev libxinerama-dev libxcursor-dev libxi-dev
 
       - name: Create build directory
         run: mkdir -p build
 
-      - name: Configure with CMake
-        run: cmake ..
+      - name: Configure with CMake (disable Wayland)
+        run: cmake .. -DGLFW_BUILD_WAYLAND=OFF
         working-directory: ./build
 
       - name: Build project
