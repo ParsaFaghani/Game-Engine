@@ -69,3 +69,5 @@ make -j$(nproc)
 
 ### 🐧 Platform / Build
 - [x] cross-platform(Linux and windows tested)
+
+This project is currently on hold.
