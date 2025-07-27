@@ -1,4 +1,4 @@
-name: Build C++ Project with CMake & Submodules
+name: Build C++ Project with CMake & GLFW
 
 on:
   push:
@@ -16,8 +16,10 @@ jobs:
         with:
           submodules: recursive
 
-      - name: Install build tools
-        run: sudo apt-get update && sudo apt-get install -y cmake make g++
+      - name: Install build dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y cmake make g++ wayland-protocols libx11-dev libxrandr-dev libxinerama-dev libxcursor-dev libxi-dev
 
       - name: Create build directory
         run: mkdir -p build
